@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppMinhasCompras.Views.EditarProduto"
+             Title="BuyItNow">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Atualizar" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout Spacing="5" Padding="25" BackgroundColor="#ffffff">
+        <Label TextColor="#022c22" Text="Atualizar produto" FontSize="24" HorizontalTextAlignment="Center" />
+
+        <Label Text="Descrição do Produto" TextColor="#022c22" FontAttributes="Bold" />
+        <Entry x:Name="txt_descricao" Text="{Binding Descricao}" TextColor="#022c22" />
+
+        <Label Text="Quantidade" TextColor="#022c22" FontAttributes="Bold" />
+        <Entry x:Name="txt_quantidade" Text="{Binding Quantidade}" Keyboard="Numeric" TextColor="#022c22" />
+
+        <Label Text="Preço Unitário" TextColor="#022c22" FontAttributes="Bold" />
+        <Entry x:Name="txt_preco" Text="{Binding Preco}" Keyboard="Numeric" TextColor="#022c22" />
+    </VerticalStackLayout>
+</ContentPage>

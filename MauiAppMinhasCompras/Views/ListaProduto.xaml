@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppMinhasCompras.Views.ListaProduto"
+             Title="BuyItNow">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Somar" Clicked="ToolbarItem_Clicked_1" />
+        <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout BackgroundColor="#059669">
+        <Label TextColor="#ffffff" Text="Minhas compras" FontSize="24" HorizontalTextAlignment="Center" Margin="10" />
+
+        <Frame VerticalOptions="Center"
+            BackgroundColor="#ffffff"
+            BorderColor="#ffffff"
+            Margin="15"
+            Padding="0"
+            CornerRadius="10">
+            <SearchBar x:Name="txt_search"
+                Placeholder="Digite aqui pra pesquisar..."
+                BackgroundColor="#ffffff"
+                PlaceholderColor="#022c22"
+                TextColor="#022c22"
+                TextChanged="txt_search_TextChanged"/>
+        </Frame>
+
+        <Frame BackgroundColor="#ffffff" BorderColor="#ffffff" Margin="0" Padding="15" VerticalOptions="FillAndExpand" >
+            <ListView x:Name="lst_produtos"
+                  IsPullToRefreshEnabled="True"
+                  Refreshing="lst_produtos_Refreshing"
+                  ItemSelected="lst_produtos_ItemSelected">
+                <ListView.Header>
+                    <Grid ColumnDefinitions="2*, *, *">
+                        <Label Grid.Column="0" Text="Produto" TextColor="#022c22" HorizontalTextAlignment="Start" FontAttributes="Bold" />
+                        <Label Grid.Column="1" Text="Valor unit." TextColor="#022c22" HorizontalTextAlignment="Start" FontAttributes="Bold" />
+                        <Label Grid.Column="2" Text="Quantidade" TextColor="#022c22" HorizontalTextAlignment="Start" FontAttributes="Bold" />
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Remover" Clicked="MenuItem_Clicked" />
+                            </ViewCell.ContextActions>
+                            <Grid ColumnDefinitions="2*, *, *">
+                                <Label Grid.Column="0" Text="{Binding Descricao}" TextColor="#022c22" HorizontalTextAlignment="Start" />
+                                <Label Grid.Column="1" Text="{Binding Preco, StringFormat='{}{0:c}'}" TextColor="#022c22" HorizontalTextAlignment="Start" />
+                                <Label Grid.Column="2" Text="{Binding Quantidade}" TextColor="#022c22" HorizontalTextAlignment="Start" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+
+    </StackLayout>
+</ContentPage>
