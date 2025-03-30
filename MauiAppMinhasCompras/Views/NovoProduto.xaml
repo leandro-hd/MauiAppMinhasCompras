@@ -19,5 +19,8 @@
 
         <Label Text="Valor Unitário:" TextColor="#022c22" FontAttributes="Bold" />
         <Entry x:Name="txt_preco" Placeholder="1" Keyboard="Numeric" TextColor="#022c22" />
+
+        <Label Text="Categoria" TextColor="#022c22" FontAttributes="Bold" />
+        <Entry x:Name="txt_categoria" Placeholder="Vestuário" TextColor="#022c22" />
     </VerticalStackLayout>
 </ContentPage>

@@ -1,8 +1,15 @@
 ﻿using MauiAppMinhasCompras.Models;
 using SQLite;
+using System.Diagnostics;
 
 namespace MauiAppMinhasCompras.Helpers
 {
+    public class CategoriaTotal
+    {
+        public string Categoria { get; set; }
+        public decimal Total { get; set; }
+    }
+
     public class SQLiteDatabaseHelper
     {
         readonly SQLiteAsyncConnection _conn;
@@ -39,9 +46,20 @@ namespace MauiAppMinhasCompras.Helpers
 
         public Task<List<Produto>> Search(string q) 
         {
-            string sql = "SELECT * FROM Produto WHERE descricao LIKE '%" + q + "%'";
+            string sql = "SELECT * FROM Produto WHERE descricao LIKE '%" + q + "%'" + " OR categoria LIKE '%" + q + "%'";
 
             return _conn.QueryAsync<Produto>(sql);
+        }
+
+        public Task<List<CategoriaTotal>> GetTotalPorCategoria() 
+        {
+            string sql = @"
+                SELECT categoria, SUM(preco * quantidade) AS Total
+                FROM Produto
+                GROUP BY categoria
+            ";
+
+            return _conn.QueryAsync<CategoriaTotal>(sql);
         }
     }
 }

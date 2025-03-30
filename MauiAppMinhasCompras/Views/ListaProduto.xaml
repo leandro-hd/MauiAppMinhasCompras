@@ -5,6 +5,7 @@
              Title="BuyItNow">
 
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Relatório" Clicked="ToolbarItem_Clicked_2" />
         <ToolbarItem Text="Somar" Clicked="ToolbarItem_Clicked_1" />
         <ToolbarItem Text="Adicionar" Clicked="ToolbarItem_Clicked" />
     </ContentPage.ToolbarItems>

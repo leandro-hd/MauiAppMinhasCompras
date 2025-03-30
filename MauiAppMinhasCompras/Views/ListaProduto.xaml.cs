@@ -43,6 +43,19 @@ public partial class ListaProduto : ContentPage
         }
     }
 
+    private void ToolbarItem_Clicked_2(object sender, EventArgs e)
+    {
+        try
+        {
+            Navigation.PushAsync(new Views.Relatorio());
+
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Erro", ex.Message, "OK");
+        }
+    }
+
     private async void txt_search_TextChanged(object sender, TextChangedEventArgs e)
     {
         try
